@@ -1,0 +1,67 @@
+/* Style the container to position elements on the right side
+#container {
+    text-align: right;
+    margin-right: 20px; /* Adjust the margin to your preference 
+
+ Style the individual elements 
+h3, h2 {
+    margin: 10px 0; /* Add some space between elements 
+} */
+.header-container {
+    text-align: center; /* Center-align the container */
+  }
+  
+  .left-heading {
+    text-align: left; /* Left-align the first heading */
+    float: left; /* Float it to the left */
+    margin-right: 20px; /* Add some right margin for spacing */
+  }
+  
+
+  .center-heading {
+    display: inline-block; /* Display it as an inline block for centering */
+   
+}
+.center-heading2 {
+    display: inline-block; /* Display it as an inline block for centering */
+    padding-left: 5px; /* Adjust the left padding as needed */
+    padding-right: 20px; /* Adjust the right padding as needed */
+}
+
+
+
+    
+  .right-heading {
+    text-align: right; /* Right-align the third heading */
+    float: right; /* Float it to the right */
+    margin-left: 20px; /* Add some left margin for spacing */
+  }
+  /* CSS to style the border around the "arranged by Customer" heading */
+  .header-container {
+    position: relative; /* Set the header-container to a relative position */
+  }
+  
+  .border-container {
+    position: absolute; /* Set the border-container to an absolute position */
+    margin-top: -200px;/* Position it at the top */
+    right: 0; /* Position it at the right */
+    text-align: right;
+    border-radius: 25px;
+    border: solid 3px black;
+    padding: 20px;
+    width: 200px;
+    height: 100px;
+  }
+  .right-heading {
+    padding-right: 20px; /* Adjust the value to control the right padding */
+  }
+  .right {
+    text-align: right;
+    margin-top: -350px; /* Adjust the value as needed to move the elements up */
+  }
+ 
+  .hello {
+    padding-top: 20px; /* Adjust the value as needed to move the content upward */
+    text-align: center; /* Center-align the content horizontally */
+  }
+  

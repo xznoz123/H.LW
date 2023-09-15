@@ -1,0 +1,81 @@
+.custom-dropdown input[type="text"] {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Style for the dropdown options */
+.dropdown-options {
+    position: absolute;
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: none;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+/* Style for each dropdown option */
+.dropdown-options li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* Style for a selected dropdown option */
+.dropdown-options li.selected {
+    background-color: #f2f2f2;
+}
+/* Add these styles to allow typing in the input field */
+
+/* Style for the custom input inside the dropdown */
+.dropdown-options .custom-option input[type="text"] {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+/* CSS */
+
+/* Style for the custom dropdown container */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style for the input field */
+.custom-dropdown input[type="text"] {
+    width: 400px; /* Adjust the width as needed */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style for the dropdown options */
+.custom-dropdown .dropdown-options {
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none;
+    background-color: #fff;
+}
+
+/* Style for each dropdown option */
+.custom-dropdown .dropdown-options li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* Style for the dropdown option on hover */
+.custom-dropdown .dropdown-options li:hover {
+    background-color: #f2f2f2;
+}

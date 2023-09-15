@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="tax2.css">
+    <link rel="stylesheet" href="expt3.css">
+    <style>
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group h5,
+        .form-group input {
+            display: inline-block;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .word-gap {
+            margin-right: 10px;
+        }
+
+        right.solid {
+            border-style: solid;
+        }
+    </style>
+    <style>
+        /* Your existing styles here */
+
+        /* Increase the width of the Description of Goods column */
+        th:nth-child(2), td:nth-child(2) {
+            width: 30%; /* Adjust the width as needed */
+        }
+
+        /* Increase the width of the entire table */
+        table {
+            width: 120%; /* Adjust the width as needed */
+        }
+
+        /* Other styles here */
+    </style>
+</head>
+<body>
+<div class="header-container">
+    <h3 class="left-heading">GSTIN:10EOUPS6446N1Z2</h3>
+    <h1 class="center-heading">Tax Invoice</h1>
+    <h3 class="right-heading">TRANSPORT DETAILS</h3>
+    <br>
+
+    <!-- Add a border around the "arranged by Customer" heading -->
+    <h1 class="center-heading2">Himalaya leather works</h1>
+    <h5>RAMBAG EAST, KANHAULI, MUZAFFARPUR - 842002</h5>
+    <h5>983561142</h5>
+    <div class="border-container">
+        <h3 class="rightt">Arranged by Customer</h3>
+    </div>
+</div>
+
+<div class="form-group">
+    <form>
+        <label for="day">Invoice:</label>
+        <input type="number" id="invoice-no" name="invoice-no" min="1000" max="10000" required><br><br>
+    </form>
+    <form>
+        <label for="day">Date:</label>
+        <input type="date" id="birthday" name="birthday">
+    </form>
+    <br>
+    <label for="fname">Name:</label>
+    <select id="customerName" name="Unit" onchange="fillCustomerInfo()">
+        <option value="custom">Enter Name</option>
+        <option value="">## Register Dealer ##</option>
+        <option value="Baba GaribNath Enterprices">Baba GaribNath Enterprices</option>
+        <option value="Gupta pipe & Fitting">Gupta pipe & Fitting</option>
+        <option value="Janta Krishi Bhandar">Janta Krishi Bhandar</option>
+        <option value="manoj enterprises">manoj enterprises</option>
+        <option value="Neelkanth hardware">Neelkanth hardware</option>
+        <option value="Neelkanth Sanitary">Neelkanth Sanitary</option>
+        <option value="Ranjeet Charakal and Hardware">Ranjeet Charakal and Hardware</option>
+        <option value="Sarve shree chandmal bajnath(HUF)"> Sarve shree chandmal bajnath(HUF)</option>
+        <option value="Shree krishna Bhandar">Shree krishna Bhandar</option>
+        <option value="Sandeep hardware">Sandeep hardware</option>
+        <option value="Shushil Bolts & Nutts Co.">Shushil Bolts & Nutts Co.</option>
+        <!-- Add more options as needed, in alphabetical order -->
+        <option value="">## Unregister Dealer ##</option>
+        <option value="Ankur kumar s/o vijay kant rai ">Ankur kumar s/o vijay kant rai </option>
+        <option value="Case-">Case-</option>
+        <option value="Dilip kumar">Dilip kumar</option>
+        <option value="Shree laxmi hardware store">Shree laxmi hardware store</option>
+        <option value="Vijay singh">Vijay singh</option>
+        <option value="Vikash kumar">Vikash kumar</option>
+    </select>
+    <input type="text" id="customName" name="customName" style="display: none;" placeholder="Enter Name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="lname">PURCHER'S GSTIN:</label>
+    <input type="text" id="lname" name="lname" placeholder="Enter GSTIN" required>
+    
+    <br>
+    <form>
+        <p><label for="w3review">Address</label></p>
+        <textarea id="address" name="address" rows="3" cols="80"></textarea>
+        <label for="state">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State - Bihar</label>
+        <label for="state">&nbsp;&nbsp;&nbsp; State code - 10</label>
+    </form>
+</div>
+
+<br>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgb(121, 121, 121);
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .left {
+        text-align: left;
+    }
+
+    h3, h2 {
+        margin: 10px 0;
+    }
+</style>
+</head>
+<body>
+<table id="myTable">
+    <tr>
+        <th>No.</th>
+        <th>Description of Goods          </th>
+        <th>HSN Code</th>
+        <th>QNTY</th>
+        <th>UNIT</th>
+        <th>RATE</th>
+        <th>AMOUNT</th>
+       <!-- Add a new column for the "Delete Row" button -->
+    </tr>
+</table>
+
+<button onclick="addRow()">Add Row</button>
+<div class="left">
+    <h2 id="amountInWords"></h2>
+    <h3>Terms & conditions</h3>
+    <h4>Goods are delivered at Customer's responsibility.<br>Goods once sold neither returned nor exchanged.<br>Subject
+        to Muzaffarpur Jurisdiction. E.& O.E.</h4>
+    <h4>Central Bank of India<br>A/c No.: 3631638194<br>IFSC: CBIN0282211</h4>
+    <div class="hello"><center><h5>Certified that the particular given above are true & correct<br>for HIMALAYA LEATHER
+            WORKS</h5>
+       <h6>prop./Authorised Signature</h6></center></div>
+    <button onclick="printInvoice()">Print Invoice</button>
+</div>
+
+<div class="right">
+    <h3 id="total"></h3>
+    <h3 id="cgst"></h3>
+    <h3 id="sgst"></h3>
+    <h3 id="Decimal Part"></h3>
+    <h2 id="grandTotal"></h2>
+</div>
+<script>
+    const input = document.getElementById("custom-input");
+    const dropdown = document.querySelector(".dropdown-options");
+    const options = document.querySelectorAll(".dropdown-options li");
+  
+    input.addEventListener("focus", () => {
+      dropdown.style.display = "block";
+    });
+  
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        input.value = option.getAttribute("data-value");
+        dropdown.style.display = "none";
+      });
+    });
+  
+    document.addEventListener("click", (event) => {
+      if (!input.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = "none";
+      }
+    });
+  </script>
+  
+<script>
+    function calculateRowAmount(input) {
+        var row = input.closest('tr');
+        var qnty = parseFloat(row.cells[3].querySelector('input').value);
+        var rate = parseFloat(row.cells[5].querySelector('input').value);
+        var amountInput = row.cells[6].querySelector('input');
+
+        if (!isNaN(qnty) && !isNaN(rate)) {
+            var amount = qnty * rate;
+            amountInput.value = amount.toFixed(2);
+        } else {
+            amountInput.value = '';
+        }
+
+        calculateTotal();
+    }
+
+    function roundAmount(amount) {
+        var decimalPart = amount - Math.floor(amount);
+         
+        // Check if the decimal part is greater than 0.5
+        if (decimalPart >= 0.45) {
+            // Round up and add 1
+            return Math.ceil(amount);
+        } else {
+            // Round down
+            return Math.floor(amount);
+        }
+    }
+    function showDropdown(input) {
+        var dropdown = input.nextElementSibling;
+        dropdown.style.display = "block";
+    }
+
+    // Function to select an option in the custom dropdown
+    function selectOption(input, option) {
+        input.value = option.getAttribute("data-value");
+        var dropdown = input.nextElementSibling;
+        dropdown.style.display = "none";
+    }
+    function handleNameChange() {
+        const customerNameSelect = document.getElementById("customerName");
+        const customNameInput = document.getElementById("customName");
+
+        if (customerNameSelect.value === "custom") {
+            customNameInput.style.display = "inline-block";
+            customNameInput.required = true;
+        } else {
+            customNameInput.style.display = "none";
+            customNameInput.required = false;
+        }
+    }
+    
+    function addRow() {
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(-1);
+
+        var cells = [];
+        for (var i = 0; i < 8; i++) { // Increase the loop count to accommodate the new column
+            cells.push(row.insertCell(i));
+        }
+
+        cells[0].innerHTML = table.rows.length - 1;
+
+        // Create the custom dropdown for the Description of Goods column
+        cells[1].innerHTML = `
+        <div class="custom-dropdown">
+            <input type="text" placeholder="Type or select an option" onfocus="showDropdown(this)">
+            <ul class="dropdown-options" style="display: none;">
+                <li onclick="selectOptionOrEnterManually(this.parentElement.previousElementSibling, this)">Enter Manually</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:sel hand pump spare planzer fitting">Hand pump spare parts:planzer fitting</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:hand pump part/washer">hand pump part/washer</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:singur premium washer blue">singur premium washer blue</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:singur premium washer white">singur premium washer white</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:singur premium washer orange">singur premium washer orange</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:washer no 4 white">washer no 4 white</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:washer no 6 white">washer no 6 white</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Solid Tikki White">Solid Tikki White</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:balb valve (white)">balb valve (white)</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:balb valve (black)">balb valve (black)</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:ring black(3 inchi)">ring black(3 inchi)</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:ring no 4">ring no 4</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Singur washer heavy blue">Singur washer heavy blue</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Singur washer heavy (white)">Singur washer heavy (white)</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Set Hand pump spare planzer fitting">Set Hand pump spare planzer fitting</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Washer Packing 3(1/2) x 6" ">Washer Packing 3(1/2) x 6" </li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Washer Packing 4 x 6(1/2)"">Washer Packing 4 x 6(1/2)"</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Washer Packing No.06 Blue">Washer Packing No.06 Blue</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Washer Packing small Blue">Washer Packing small Blue</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Washer Packing medium Blue">Washer Packing medium Blue</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Washer Packing big Blue">Washer Packing big Blue</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Hand pump tikki bihar (white)">Hand pump tikki bihar (white)</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Hand pump tikki bihar (black)">Hand pump tikki bihar (black)</li>
+                    <li onclick="selectOption(this.parentElement.previousElementSibling, this)" data-value="Hand pump spare parts:Hand pump base valve">Hand pump base valve</li>
+                </ul>
+            </div>`;
+        
+
+        cells[2].innerHTML = `<select  name="Code" <option value="">Select Code</option>
+            <option value="8413">8413</option>
+            <option value="392690">392690</option>;
+           `;
+        cells[3].innerHTML = `<input type="text" placeholder="Qnty" oninput="calculateRowAmount(this)">`;
+        cells[4].innerHTML = `<select name="Unit">
+            <option value="">Select Quantity</option>
+            <option value="piece">Piece</option>
+            <option value="dozen">Dozen</option>
+            <option value="items">Items</option>
+            <option value="pair">pkts</option>
+       </select>`;
+        cells[5].innerHTML = `<input type="text" placeholder="RATE" oninput="calculateRowAmount(this)">`;
+        cells[6].innerHTML = `<input type="text" placeholder="AMOUNT">`;
+        cells[7].innerHTML = `<button onclick="deleteRow(this)">Delete Row</button>`; // Add the "Delete Row" button
+
+        calculateRowAmount(cells[3].querySelector('input'));
+    }
+
+    function deleteRow(button) {
+        var row = button.closest('tr');
+        row.parentNode.removeChild(row);
+        calculateTotal();
+    }
+   // Function to show the custom input when "Enter Product" is selected
+   
+// JavaScript
+
+// Function to show/hide the dropdown options
+function showDropdown(input) {
+    const dropdownOptions = input.nextElementSibling;
+    dropdownOptions.style.display = "block";
+}
+
+// Function to select an option from the dropdown
+function selectOption(input, option) {
+    input.value = option.getAttribute("data-value");
+    hideDropdown(input);
+}
+
+// Function to enter an option manually
+function selectOptionOrEnterManually(input, option) {
+    const manuallyEnteredValue = prompt("Enter your option:");
+    if (manuallyEnteredValue !== null) {
+        input.value = manuallyEnteredValue;
+        hideDropdown(input);
+    }
+}
+
+// Function to hide the dropdown options
+function hideDropdown(input) {
+    const dropdownOptions = input.nextElementSibling;
+    dropdownOptions.style.display = "none";
+}
+
+// Event listener to hide the dropdown when clicking outside of it
+document.addEventListener("click", function (event) {
+    const dropdowns = document.querySelectorAll(".custom-dropdown");
+    dropdowns.forEach(function (dropdown) {
+        if (!dropdown.contains(event.target)) {
+            hideDropdown(dropdown.querySelector("input"));
+        }
+    });
+});
+
+    function calculateTotal() {
+        var total = 0;
+        var amountInputs = document.querySelectorAll('input[type="text"][placeholder="AMOUNT"]');
+    
+        amountInputs.forEach(function (input) {
+            var amount = parseFloat(input.value);
+            if (!isNaN(amount)) {
+                total += amount;
+            }
+        });
+    
+        var cgst = (total * 2.5) / 100;
+        var sgst = (total * 2.5) / 100;
+
+        var decimalPartCgst = cgst - Math.floor(cgst);
+        var decimalPartSgst = sgst - Math.floor(sgst);
+        var decimalPartTotal = total - Math.floor(total);
+
+        var totalDecimalPart = decimalPartCgst + decimalPartSgst + decimalPartTotal;
+        var roundedTotalDecimalPart = Math.round(totalDecimalPart * 100) / 100;
+       
+        var grandTotal =roundAmount ( total + cgst + sgst);
+        var decimalPart = totalDecimalPart % 1;
+
+        function roundDecimalToNextInteger(decimal) {
+            if (decimal >= 0.500) {
+                var difference = (1 - decimal).toFixed(3); // Rounded to 3 decimal places
+                return parseFloat(difference);
+            }
+            else 
+                return decimal
+
+        }
+        function sign(decimal) {
+            if (decimal >= 0.500) {
+             // Rounded to 3 decimal places
+                return "(+)"
+            }
+            else return "(-)"
+
+        }
+
+        var roundedDecimal = decimalPart.toFixed(3);//0.8
+      
+        var new2 = roundDecimalToNextInteger(roundedDecimal);//null//0.2
+
+        // when it bounded the round decimal its mean (-)
+        var roundOffSign =sign(roundedDecimal); 
+        var roundOffValue = Math.abs(roundedTotalDecimalPart).toFixed(2);
+    
+        document.getElementById("total").innerText = "Total: " + total.toFixed(2);
+        document.getElementById("cgst").innerText = "Add CGST 2.5%: " + cgst.toFixed(2);
+        document.getElementById("sgst").innerText = "Add SGST 2.5%: " + sgst.toFixed(2);
+        document.getElementById("Decimal Part").innerText = "Round off: " + roundOffSign + new2;
+        document.getElementById("grandTotal").innerText = "Grand Total: " + grandTotal.toFixed(2);
+    
+        var amountInWords = calculateAmountInWords(grandTotal);
+        document.getElementById("amountInWords").innerText = "Amount in Words: " + amountInWords + " Only.";
+    }
+    
+    
+
+   function calculateAmountInWords(amount) {
+        const units = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+        const tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+        const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+        const scales = ['', 'Thousand', 'Million', 'Billion', 'Trillion'];
+
+        if (amount === 0) {
+            return 'Zero';
+        }
+
+        let amountInWords = '';
+
+        let scaleCount = 0;
+        while (amount > 0) {
+            let hundredsPart = amount % 1000;
+            let hundredsPartInWords = '';
+
+            if (hundredsPart > 0) {
+                let unitsPart = hundredsPart % 10;
+                let tensPart = Math.floor(hundredsPart / 10) % 10;
+                let hundredsDigit = Math.floor(hundredsPart / 100) % 10;
+
+                if (hundredsDigit > 0) {
+                    hundredsPartInWords += units[hundredsDigit] + ' Hundred ';
+                }
+
+                if (tensPart === 1) {
+                    hundredsPartInWords += teens[unitsPart] + ' ';
+                } else {
+                    hundredsPartInWords += tens[tensPart] + ' ' + units[unitsPart] + ' ';
+                }
+            }
+
+            if (hundredsPartInWords !== '') {
+                amountInWords = hundredsPartInWords + scales[scaleCount] + ' ' + amountInWords;
+            }
+
+            amount = Math.floor(amount / 1000);
+            scaleCount++;
+        }
+
+        return amountInWords.trim();
+    }
+
+    function printInvoice() {
+        window.print();
+    }
+   // Add this JavaScript code after defining the showDropdown and selectOption functions
+
+function handleManualInput(input) {
+    const dropdown = input.nextElementSibling;
+    const customOptionInput = document.createElement("li");
+    
+    customOptionInput.innerText = input.value;
+    customOptionInput.onclick = function () {
+        selectOption(input, this);
+    };
+
+    dropdown.insertBefore(customOptionInput, dropdown.lastElementChild);
+
+    // Clear the input field and hide the dropdown
+    input.value = "";
+    dropdown.style.display = "none";
+}
+
+function showDropdown(input) {
+    const dropdown = input.nextElementSibling;
+    dropdown.style.display = "block";
+
+    // Add an event listener to capture Enter key press for manual input
+    input.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent form submission if inside a form
+            handleManualInput(input);
+        }
+    });
+}
+
+    
+    function fillCustomerInfo() {
+        var customerNameSelect = document.getElementById("customerName");
+        var customNameInput = document.getElementById("customName");
+        var purchaserGSTIN = document.getElementById("lname");
+        var addressTextarea = document.getElementById("address");
+    
+        if (customerNameSelect.value === "custom") {
+            customNameInput.style.display = "inline-block";
+            customNameInput.required = true;
+            purchaserGSTIN.value = "";
+            addressTextarea.value = "";
+        } else {
+            customNameInput.style.display = "none";
+            customNameInput.required = false;
+    
+            var selectedName = customerNameSelect.value;
+            var customerInfoMap = {
+                "Baba GaribNath Enterprices": {
+                    gstin: "10A0QPK9056A1Z5",
+                    address: "Pankaj market road, Muzaffarpur"
+                },
+                "Gupta pipe & Fitting": {
+                    gstin: "10AARPG96Z1J1ZN",
+                    address: "Jawhal Lal Road, Muzaffarpur"
+                },
+                "Janta Krishi Bhandar": {
+                    gstin: "10AKQPK8043FIZA",
+                    address: "bari bazar, Gopalganj"
+                },
+                "manoj enterprises": {
+                    gstin: "10CLLPS7549L1ZH",
+                    address: "Sindhia, Samastipur"
+                },
+                "Neelkanth hardware": {
+                    gstin: "10ALXPC5860G1Z4",
+                    address: "C/O Raj Kumar Singh,Andi Gola Road, Muzaffarpur"
+                },
+                "Neelkanth Sanitary": {
+                    gstin: "10CLLPS7549L1ZH",
+                    address: "Sindhia, Samastipur"
+                },
+                "Ranjeet Charakal and Hardware": {
+                    gstin: "10DOMPS74OOK1ZT",
+                    address: "Dalsigh saray, Samastipur"
+                },
+                "Sarve shree chandmal bajnath(HUF)": {
+                    gstin: "10AAAHU7905C1ZN",
+                    address: "Henri Bazar, motihari"
+                },
+                "Shree krishna Bhandar": {
+                    gstin: "10APTP59453F1ZH",
+                    address: "Babunia road, Siwan"
+                },
+                "Sandeep hardware": {
+                    gstin: "1BFOPP8552C1ZH",
+                    address: "Henri Bazar, motihari"
+                },
+                "Shushil Bolts & Nutts Co.": {
+                    gstin: "10DVPJ5025C1ZZ",
+                    address: "Jawhal Lal Road, Muzaffarpur"
+                },
+                "Ankur kumar s/o vijay kant rai ": {
+                    gstin: "U.R.D",
+                    address: "AD/N-964595833312, GOPARLPUR KHURD, Muzaffarpur"
+                },
+                "Case-": {
+                    gstin: "U.R.D",
+                    address: "---"
+                },
+                "Dilip kumar": {
+                    gstin: "U.R.D",
+                    address: "Pilkhi, Muzaffarpur"
+                },
+            
+               
+                "Shree laxmi hardware store": {
+                    gstin: "U.R.D",
+                    address: "Purani bhatti Road, Chanpatiya"
+                },
+                "Vijay singh": {
+                    gstin: "U.R.D",
+                    address: "AD/N-528885863980,Maniyari, Muzaffarpur"
+                },
+                "Vikash kumar": {
+                    gstin: "U.R.D",
+                    address: "AD/N-513008758239,Susta, Muzaffarpur"
+                }
+
+
+                // Add more customer info as needed
+            };
+    
+            var customerInfo = customerInfoMap[selectedName];
+            if (customerInfo) {
+                purchaserGSTIN.value = customerInfo.gstin;
+                addressTextarea.value = customerInfo.address;
+            } else {
+                purchaserGSTIN.value = "";
+                addressTextarea.value = "";
+            }
+        }
+    }
+</script>
+</body>
+</html>
